@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ws.pojo.ResponseData;
+import com.ws.pojo.Result;
  
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -24,9 +24,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ResponseData defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+    public Result defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
         logger.error("", e);
-        ResponseData r = new ResponseData();
+        Result r = new Result();
         r.setMessage(e.getMessage());
         if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
              r.setCode(404);
