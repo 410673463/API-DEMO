@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ws.pojo.Result;
+import com.ws.pojo.ResultCode;
  
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -29,12 +30,10 @@ public class GlobalExceptionHandler {
         Result r = new Result();
         r.setMessage(e.getMessage());
         if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
-             r.setCode(404);
+            r.failure(ResultCode.SYSTEM_404_ERROR, null);
         } else {
-             r.setCode(500);
+            r.failure(ResultCode.SYSTEM_500_ERROR, null);
         }
-        r.setData(null);
-        r.setStatus(false);
         return r;
     }
 }

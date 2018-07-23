@@ -23,7 +23,8 @@ public enum ResultCode {
 
     /* 系统错误：40001-49999 */
     SYSTEM_INNER_ERROR(40001, "系统繁忙，请稍后重试"),
-
+    SYSTEM_404_ERROR(404,"请求的内容不存在"),
+    SYSTEM_500_ERROR(404,"服务器错误"),
     /* 数据错误：50001-599999 */
     RESULE_DATA_NONE(50001, "数据未找到"),
     DATA_IS_WRONG(50002, "数据有误"),
